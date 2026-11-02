@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#6d28d9">
+<meta name="description" content="بیمه‌یار؛ مقایسه هوشمند بیمه در ازکی، بیمه دات‌کام و بیمه‌بازار">
+<title>بیمه‌یار | مقایسه و راهنمای انتخاب بیمه</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1a5cff;
+  --purple:#6d28d9;
+  --yellow:#f59e0b;
+  --yellow-soft:#fef3c7;
+  --navy:#1e1b4b;
+  --sky:#f5f3ff;
+  --ink:#1e1b4b;
+  --muted:#64748b;
+  --line:#e9e5ff;
+  --green:#059669;
+  --white:#fff;
+  --shadow:0 12px 35px rgba(109,40,217,.12);
+  --grad:linear-gradient(135deg,#1a5cff 0%,#6d28d9 55%,#f59e0b 100%);
+}
+*{box-sizing:border-box}
+body{margin:0;background:#faf8ff;color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.wrap{width:min(1160px,calc(100% - 32px));margin:auto}
+
+/* Topbar */
+.topbar{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;box-shadow:0 1px 0 rgba(109,40,217,.04)}
+.nav{height:74px;display:flex;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--purple);font-size:24px;white-space:nowrap}
+.shield{width:42px;height:42px;border-radius:14px;background:var(--grad);display:grid;place-items:center;color:white;font-size:22px;box-shadow:0 6px 16px rgba(109,40,217,.25)}
+.navlinks{display:flex;gap:18px;align-items:center;margin-inline:auto;color:#4b5563;font-size:14px;font-weight:500}
+.navlinks a:hover{color:var(--purple)}
+.btn{border:0;border-radius:13px;padding:12px 18px;font-weight:700;display:inline-flex;justify-content:center;align-items:center;gap:8px;transition:.2s}
+.primary{background:var(--grad);color:white;box-shadow:0 8px 20px rgba(109,40,217,.28)}
+.primary:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.soft{background:#ede9fe;color:var(--purple)}
+.soft:hover{background:#ddd6fe}
+.outline{background:white;border:1px solid var(--line);color:var(--ink)}
+.outline:hover{border-color:var(--purple);color:var(--purple)}
+.yellow-btn{background:var(--yellow);color:#1e1b4b;box-shadow:0 6px 16px rgba(245,158,11,.3)}
+.yellow-btn:hover{background:#d97706;color:white}
+
+/* Hero */
+.hero{padding:48px 0 30px;background:radial-gradient(ellipse at 15% 0%,#ddd6fe 0,transparent 45%),radial-gradient(ellipse at 85% 20%,#fef3c7 0,transparent 40%),linear-gradient(160deg,#faf8ff,#f5f3ff)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center}
+.eyebrow{color:var(--purple);font-weight:800;font-size:13px;letter-spacing:.3px}
+.hero h1{font-size:clamp(28px,4.2vw,44px);line-height:1.4;margin:12px 0;color:var(--navy)}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{line-height:2;color:#536783;margin:0 0 22px}
+.searchbox{display:flex;background:white;border:1px solid #e0d9ff;border-radius:16px;padding:7px;box-shadow:var(--shadow);gap:8px}
+.searchbox input{min-width:0;flex:1;border:0;outline:0;padding:12px 14px;background:transparent}
+.hero-card{background:white;border-radius:22px;padding:22px;box-shadow:var(--shadow);border:1px solid #ebe4ff}
+.hero-card h3{margin:0 0 12px;font-size:16px}
+.provider-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.pill{padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700}
+.pill-blue{background:#dbeafe;color:#1d4ed8}
+.pill-purple{background:#ede9fe;color:#6d28d9}
+.pill-yellow{background:#fef3c7;color:#b45309}
+
+/* Sections */
+.section{padding:42px 0}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.section-head h2{margin:0;font-size:24px;color:var(--navy)}
+.sub{color:var(--muted);margin:6px 0 0;font-size:14px;line-height:1.8}
+
+/* Categories */
+.categories{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.cat{background:white;border:1px solid var(--line);border-radius:16px;padding:16px 12px;text-align:center;transition:.2s;display:flex;flex-direction:column;align-items:center;gap:8px}
+.cat:hover,.cat.active{border-color:var(--purple);box-shadow:0 8px 22px rgba(109,40,217,.12);transform:translateY(-2px)}
+.cat-icon{font-size:28px}
+.cat strong{font-size:13px}
+
+/* Cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.insurance-card{background:white;border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px;transition:.2s;position:relative;overflow:hidden}
+.insurance-card::before{content:"";position:absolute;top:0;right:0;left:0;height:4px;background:var(--grad)}
+.insurance-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.card-top{display:flex;gap:12px;align-items:center}
+.card-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#ede9fe,#fef3c7);display:grid;place-items:center;font-size:24px}
+.card-top h3{margin:0;font-size:16px}
+.status{font-size:12px;color:var(--muted);font-weight:600}
+.insurance-card p{margin:0;color:#4b5563;line-height:1.8;font-size:13.5px;flex:1}
+.card-actions{display:flex;gap:8px;flex-wrap:wrap}
+.feature-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.mini-btn{border:0;background:#f5f3ff;color:var(--purple);border-radius:10px;padding:7px 12px;font-size:12px;font-weight:700}
+.mini-btn:hover{background:#ede9fe}
+.mini-btn.active{background:var(--purple);color:white}
+
+/* Notice */
+.notice{display:flex;gap:16px;align-items:flex-start;background:linear-gradient(135deg,#f5f3ff,#fef3c7);border:1px solid #e9e5ff;border-radius:18px;padding:20px}
+.notice-icon{font-size:28px;flex-shrink:0}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.step{background:white;border:1px solid var(--line);border-radius:18px;padding:20px}
+.step b{display:block;margin-bottom:8px;color:var(--purple)}
+
+/* Compare panel */
+.panel-card{background:white;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 4px 18px rgba(109,40,217,.06)}
+.compare-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:16px}
+.compare-site{border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.compare-site h4{margin:0;display:flex;align-items:center;gap:8px}
+.site-azki{border-top:4px solid #1a5cff}
+.site-bimeh{border-top:4px solid #6d28d9}
+.site-bazar{border-top:4px solid #f59e0b}
+.badge{font-size:11px;padding:3px 8px;border-radius:999px;font-weight:700}
+.badge-blue{background:#dbeafe;color:#1d4ed8}
+.badge-purple{background:#ede9fe;color:#6d28d9}
+.badge-yellow{background:#fef3c7;color:#b45309}
+
+/* Extra */
+.extra-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.saved-list{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.saved-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 12px;background:#faf8ff;border-radius:12px;border:1px solid var(--line)}
+.saved-item small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;font-weight:600;color:#374151}
+.field input,.field select,.field textarea{border:1px solid var(--line);border-radius:12px;padding:11px 14px;background:#faf8ff;outline:0}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(109,40,217,.12)}
+.admin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.admin-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+.admin-item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;flex-wrap:wrap}
+.admin-panel{display:none;padding:30px 0 50px}
+.admin-panel.show{display:block}
+.article-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.article{background:white;border:1px solid var(--line);border-radius:18px;padding:18px}
+.article-icon{font-size:26px;margin-bottom:8px}
+.article h3{margin:0 0 8px;font-size:16px}
+.article p{margin:0;color:#4b5563;line-height:1.8;font-size:13.5px}
+.empty{text-align:center;padding:40px 20px;color:var(--muted);background:white;border-radius:16px;border:1px dashed var(--line)}
+.tiny{font-size:12px;color:var(--muted);line-height:1.7}
+
+/* Modal */
+.modal-backdrop{position:fixed;inset:0;background:rgba(30,27,75,.55);backdrop-filter:blur(4px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-backdrop.show{display:flex}
+.modal{background:white;border-radius:22px;width:min(420px,100%);padding:28px 24px;box-shadow:0 25px 60px rgba(0,0,0,.25);animation:pop .25s ease}
+@keyframes pop{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+.modal h3{margin:0 0 8px;font-size:20px;color:var(--navy)}
+.modal p{margin:0 0 18px;color:var(--muted);font-size:14px;line-height:1.8}
+.provider-options{display:flex;flex-direction:column;gap:10px}
+.provider-btn{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:#faf8ff;font-weight:700;transition:.2s;text-align:right}
+.provider-btn:hover{border-color:var(--purple);background:#f5f3ff;transform:translateX(-3px)}
+.provider-btn .logo{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:18px;font-weight:800;color:white}
+.logo-azki{background:#1a5cff}
+.logo-bimeh{background:#6d28d9}
+.logo-bazar{background:#f59e0b;color:#1e1b4b}
+.modal-close{margin-top:16px;width:100%}
+
+/* Toast */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--navy);color:white;padding:12px 22px;border-radius:14px;font-size:14px;font-weight:600;z-index:200;display:none;box-shadow:0 10px 30px rgba(0,0,0,.25);max-width:90%}
+
+/* Footer */
+footer{background:var(--navy);color:#c4b5fd;padding:36px 0 28px;margin-top:20px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+footer strong{color:white}
+footer a{color:#e9d5ff}
+footer a:hover{color:var(--yellow)}
+
+@media(max-width:800px){
+  .hero-grid{grid-template-columns:1fr}
+  .navlinks{display:none}
+  .nav{gap:12px}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap nav">
+    <a href="#" class="brand"><div class="shield">🛡️</div> بیمه‌یار</a>
+    <nav class="navlinks">
+      <a href="#insurance">بیمه‌ها</a>
+      <a href="#compare">مقایسه</a>
+      <a href="#how">راهنما</a>
+      <a href="#reminders">یادآوری</a>
+      <a href="#account">حساب</a>
+    </nav>
+    <button class="btn soft" id="adminToggle" type="button">ورود مدیر</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">انتخاب آگاهانه با بیمه‌یار</span>
+      <h1>بیمه مناسب را در <span>سه سایت معتبر</span> مقایسه کن</h1>
+      <p>انواع بیمه را ببین، سپس بین <strong>ازکی</strong>، <strong>بیمه دات‌کام</strong> و <strong>بیمه‌بازار</strong> انتخاب کن و مستقیم وارد صفحه استعلام شو. قیمت ساختگی نمایش داده نمی‌شود.</p>
+      <div class="searchbox">
+        <input id="search" type="search" placeholder="جست‌وجوی نوع بیمه..." aria-label="جست‌وجو">
+        <button class="btn primary" id="searchBtn" type="button">جست‌وجو</button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>مقایسه در سه پلتفرم معتبر</h3>
+      <p style="margin:0;color:var(--muted);font-size:13.5px;line-height:1.8">با یک کلیک، لینک استعلام همان بیمه را در سایت موردنظر باز کن و قیمت واقعی را ببین.</p>
+      <div class="provider-pills">
+        <span class="pill pill-blue">ازکی</span>
+        <span class="pill pill-purple">بیمه دات‌کام</span>
+        <span class="pill pill-yellow">بیمه‌بازار</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>دسته‌بندی بیمه‌ها</h2>
+        <p class="sub">برای شروع، نوع بیمه موردنیازت را انتخاب کن.</p>
+      </div>
+    </div>
+    <div class="categories" id="categories"></div>
+  </div>
+</section>
+
+<section class="section" id="insurance">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>بیمه‌های قابل بررسی</h2>
+        <p class="sub">روی «استعلام و خرید» بزن تا بین سه سایت انتخاب کنی.</p>
+      </div>
+      <select id="sort" class="btn outline" aria-label="مرتب‌سازی">
+        <option value="default">ترتیب پیشنهادی</option>
+        <option value="name">نام بیمه</option>
+      </select>
+    </div>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="notice">
+      <div class="notice-icon">🔗</div>
+      <div style="flex:1">
+        <strong>انتخاب سایت قبل از ورود</strong>
+        <p style="margin:6px 0 0;color:#4b5563;line-height:1.8;font-size:14px">دیگر مستقیم به یک سایت منتقل نمی‌شوی. پس از انتخاب بیمه، از تو پرسیده می‌شود که می‌خواهی به <strong>ازکی</strong>، <strong>بیمه دات‌کام</strong> یا <strong>بیمه‌بازار</strong> بروی.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>چطور از بیمه‌یار استفاده کنی؟</h2>
+        <p class="sub">چهار مرحله ساده تا مقایسه واقعی قیمت.</p>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><b>۱. انتخاب نوع بیمه</b><p>از دسته‌بندی یا جست‌وجو، بیمه موردنظر را پیدا کن.</p></div>
+      <div class="step"><b>۲. مقایسه در سه سایت</b><p>با دکمه «مقایسه»، همان بیمه را در ازکی، بیمه دات‌کام و بیمه‌بازار کنار هم ببین.</p></div>
+      <div class="step"><b>۳. انتخاب سایت</b><p>روی استعلام بزن و یکی از سه پلتفرم را انتخاب کن.</p></div>
+      <div class="step"><b>۴. استعلام قیمت واقعی</b><p>در سایت انتخاب‌شده قیمت و پوشش نهایی را ببین و تصمیم بگیر.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="compare">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>مقایسهٔ یک بیمه در سه سایت</h2>
+        <p class="sub">یک بیمه را انتخاب کن تا همان نوع بیمه در ازکی، بیمه دات‌کام و بیمه‌بازار مقایسه شود.</p>
+      </div>
+      <button class="btn outline" id="clearCompare" type="button">پاک‌کردن مقایسه</button>
+    </div>
+    <div class="panel-card">
+      <p id="compareHelp" class="sub" style="margin:0">از کارت‌های بیمه روی «＋ مقایسه» بزن تا جدول مقایسه سه سایت برای همان بیمه نمایش داده شود.</p>
+      <div id="compareArea"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap extra-grid">
+    <div class="panel-card">
+      <h3>♡ بیمه‌های ذخیره‌شده</h3>
+      <p class="sub" style="margin:0">علاقه‌مندی‌ها روی همین دستگاه ذخیره می‌شوند.</p>
+      <div id="favoritesList" class="saved-list"></div>
+    </div>
+    <div class="panel-card">
+      <h3>👤 پروفایل نمایشی</h3>
+      <p class="sub" style="margin:0">نام نمایشی فقط روی همین دستگاه ذخیره می‌شود.</p>
+      <div class="field" style="margin-top:12px">
+        <label for="profileName">نام نمایشی</label>
+        <input id="profileName" maxlength="50" placeholder="مثلاً علی">
+      </div>
+      <div class="admin-actions">
+        <button class="btn soft" id="saveProfile" type="button">ذخیره</button>
+        <span id="profileStatus" class="tiny"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="reminders">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>یادآوری تمدید بیمه</h2>
+        <p class="sub">تاریخ انقضا را ثبت کن تا هنگام باز کردن برنامه یادآوری ببینی.</p>
+      </div>
+    </div>
+    <div class="extra-grid">
+      <div class="panel-card">
+        <h3>＋ ثبت بیمه‌نامه</h3>
+        <div class="field" style="margin-top:10px"><label for="policyTitle">عنوان بیمه‌نامه</label><input id="policyTitle" placeholder="مثلاً شخص ثالث پراید"></div>
+        <div class="field" style="margin-top:10px"><label for="policyExpiry">تاریخ انقضا</label><input id="policyExpiry" type="date"></div>
+        <div class="field" style="margin-top:10px"><label for="policyNote">یادداشت (اختیاری)</label><input id="policyNote" maxlength="120" placeholder="مثلاً شرکت بیمه ایران"></div>
+        <div class="admin-actions"><button class="btn primary" id="addPolicy" type="button">ثبت یادآوری</button></div>
+      </div>
+      <div class="panel-card">
+        <h3>📋 لیست یادآوری‌ها</h3>
+        <div id="policiesList" class="saved-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="learn">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>آموزش و راهنمای بیمه</h2>
+        <p class="sub">محتوای عمومی برای تصمیم‌گیری آگاهانه.</p>
+      </div>
+    </div>
+    <div class="article-list">
+      <article class="article"><div class="article-icon">📘</div><h3>فرانشیز چیست؟</h3><p>فرانشیز بخشی از خسارت است که طبق شرایط بیمه‌نامه بر عهده بیمه‌گذار است. هرچه فرانشیز بالاتر باشد، معمولاً حق بیمه کمتر است.</p></article>
+      <article class="article"><div class="article-icon">🚗</div><h3>تفاوت شخص ثالث و بدنه</h3><p>شخص ثالث خسارت به دیگران را پوشش می‌دهد و اجباری است. بدنه خسارت به خودروی خودتان را پوشش می‌دهد و اختیاری است.</p></article>
+      <article class="article"><div class="article-icon">💡</div><h3>چطور قیمت را مقایسه کنیم؟</h3><p>در بیمه‌یار می‌توانی همان نوع بیمه را در سه سایت معتبر باز کنی و قیمت واقعی + پوشش‌ها را کنار هم ببینی.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="notice">
+      <div class="notice-icon">🛡️</div>
+      <div>
+        <strong>درباره بیمه‌یار</strong>
+        <p style="margin:6px 0 0;color:#4b5563;line-height:1.8;font-size:14px">بیمه‌یار یک راهنمای مقایسه و معرفی است و بیمه‌نامه صادر نمی‌کند. نام و نشان ارائه‌دهندگان متعلق به صاحبان آن‌هاست. پیش از خرید، شرایط نهایی و هویت وب‌سایت مقصد را بررسی کن.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="account">
+  <div class="wrap">
+    <div class="panel-card">
+      <h2>حساب آنلاین بیمه‌یار</h2>
+      <p class="sub">برای ذخیره آنلاین اطلاعات، ابتدا اتصال Supabase را تنظیم کن.</p>
+      <div class="admin-grid" style="margin-top:16px">
+        <div class="field"><label for="sbUrl">آدرس پروژه Supabase</label><input id="sbUrl" type="url" placeholder="https://YOUR-PROJECT.supabase.co" autocomplete="url"></div>
+        <div class="field"><label for="sbKey">کلید عمومی Publishable / anon</label><input id="sbKey" type="password" placeholder="sb_publishable_… یا anon key" autocomplete="off"></div>
+      </div>
+      <div class="admin-actions">
+        <button class="btn outline" id="saveSbConfig" type="button">ذخیره تنظیمات اتصال</button>
+        <span class="tiny">فقط کلید عمومی را وارد کن؛ هرگز service_role را در سایت قرار نده.</span>
+      </div>
+      <div class="admin-grid" style="margin-top:18px">
+        <div class="field"><label for="authEmail">ایمیل</label><input id="authEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+        <div class="field"><label for="authPassword">رمز عبور</label><input id="authPassword" type="password" autocomplete="current-password" minlength="8" placeholder="حداقل ۸ نویسه"></div>
+      </div>
+      <div class="admin-actions">
+        <button class="btn primary" id="signInBtn" type="button">ورود</button>
+        <button class="btn outline" id="signUpBtn" type="button">ساخت حساب</button>
+        <button class="btn soft" id="signOutBtn" type="button" hidden>خروج</button>
+      </div>
+      <p id="authStatus" role="status" aria-live="polite">اتصال هنوز تنظیم نشده است.</p>
+      <p class="tiny">در Supabase باید Site URL و Redirect URLs شامل آدرس سایت Netlify باشند.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap admin-panel" id="adminPanel">
+  <h2>پنل مدیریت بیمه‌یار</h2>
+  <p class="sub" id="adminModeText">مدیریت فهرست بیمه‌ها</p>
+  <div class="admin-grid">
+    <div class="field"><label for="pTitle">عنوان بیمه</label><input id="pTitle" placeholder="مثلاً بیمه بدنه خودرو"></div>
+    <div class="field"><label for="pCategory">دسته‌بندی</label>
+      <select id="pCategory">
+        <option value="خودرو">خودرو</option>
+        <option value="موتور">موتور</option>
+        <option value="ساختمان">ساختمان</option>
+        <option value="عمر و درمان">عمر و درمان</option>
+        <option value="مسافرتی">مسافرتی</option>
+        <option value="سایر">سایر</option>
+      </select>
+    </div>
+    <div class="field"><label for="pIcon">نماد (ایموجی)</label><input id="pIcon" value="🛡️"></div>
+    <div class="field"><label for="pLink">لینک پیش‌فرض (اختیاری)</label><input id="pLink" type="url" placeholder="https://…"></div>
+  </div>
+  <div class="field" style="margin-top:12px"><label for="pDesc">توضیحات</label><textarea id="pDesc" rows="3" placeholder="توضیح کوتاه درباره این بیمه"></textarea></div>
+  <div class="admin-actions">
+    <button class="btn primary" id="saveProduct" type="button">ذخیره بیمه</button>
+    <button class="btn outline" id="cancelEdit" type="button">انصراف</button>
+    <button class="btn soft" id="exportData" type="button">خروجی JSON</button>
+  </div>
+  <div id="adminList" style="margin-top:22px"></div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <strong>بیمه‌یار</strong>
+      <p style="margin:6px 0 0;font-size:13px;line-height:1.7">راهنمای مقایسه بیمه در ازکی، بیمه دات‌کام و بیمه‌بازار<br>این سایت صادرکننده بیمه‌نامه نیست.</p>
+    </div>
+    <div style="font-size:13px">
+      <a href="#about">درباره</a> · <a href="#account">حساب</a> · نسخه ۲.۲
+    </div>
+  </div>
+</footer>
+
+<div class="modal-backdrop" id="providerModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <h3 id="modalTitle">کدام سایت را انتخاب می‌کنی؟</h3>
+    <p id="modalDesc">بیمه انتخاب‌شده را در یکی از سه پلتفرم معتبر استعلام کن.</p>
+    <div class="provider-options" id="providerOptions"></div>
+    <button class="btn outline modal-close" id="closeModal" type="button">انصراف</button>
+  </div>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ========== Data & Providers ========== */
+const PROVIDERS = {
+  azki: {
+    id: "azki",
+    name: "ازکی",
+    color: "blue",
+    logoClass: "logo-azki",
+    base: "https://www.azki.com/",
+    urls: {
+      "car-third": "https://www.azki.com/car-insurance/third-party-insurance",
+      "car-body": "https://www.azki.com/car-insurance",
+      "motor": "https://www.azki.com/car-insurance",
+      "home": "https://www.azki.com/",
+      "life": "https://www.azki.com/",
+      "health": "https://www.azki.com/",
+      "travel": "https://www.azki.com/",
+      "liability": "https://www.azki.com/"
+    }
+  },
+  bimeh: {
+    id: "bimeh",
+    name: "بیمه دات‌کام",
+    color: "purple",
+    logoClass: "logo-bimeh",
+    base: "https://bimeh.com/",
+    urls: {
+      "car-third": "https://bimeh.com/",
+      "car-body": "https://bimeh.com/",
+      "motor": "https://bimeh.com/",
+      "home": "https://bimeh.com/",
+      "life": "https://bimeh.com/",
+      "health": "https://bimeh.com/",
+      "travel": "https://bimeh.com/",
+      "liability": "https://bimeh.com/"
+    }
+  },
+  bazar: {
+    id: "bazar",
+    name: "بیمه‌بازار",
+    color: "yellow",
+    logoClass: "logo-bazar",
+    base: "https://bimebazar.com/",
+    urls: {
+      "car-third": "https://bimebazar.com/",
+      "car-body": "https://bimebazar.com/",
+      "motor": "https://bimebazar.com/",
+      "home": "https://bimebazar.com/",
+      "life": "https://bimebazar.com/",
+      "health": "https://bimebazar.com/",
+      "travel": "https://bimebazar.com/",
+      "liability": "https://bimebazar.com/"
+    }
+  }
+};
+
+const seed = [
+  {id:"car-third",title:"بیمه شخص ثالث خودرو",category:"خودرو",icon:"🚘",desc:"برای بررسی شرایط و استعلام بیمه شخص ثالث خودرو از ارائه‌دهنده رسمی استفاده کنید."},
+  {id:"car-body",title:"بیمه بدنه خودرو",category:"خودرو",icon:"🚗",desc:"برای بررسی پوشش‌ها و استعلام قیمت بیمه بدنه، مشخصات خودرو را در صفحه رسمی وارد کنید."},
+  {id:"motor",title:"بیمه موتورسیکلت",category:"موتور",icon:"🏍️",desc:"شرایط بیمه موتور و قیمت نهایی پس از استعلام در سایت ارائه‌دهنده مشخص می‌شود."},
+  {id:"home",title:"بیمه آتش‌سوزی و ساختمان",category:"ساختمان",icon:"🏠",desc:"پوشش‌های ساختمان، آتش‌سوزی و زلزله را در صفحه رسمی بررسی کنید."},
+  {id:"life",title:"بیمه عمر",category:"عمر و درمان",icon:"💚",desc:"شرایط، تعهدات و جزئیات بیمه عمر را پیش از خرید از ارائه‌دهنده بررسی کنید."},
+  {id:"health",title:"بیمه درمان تکمیلی",category:"عمر و درمان",icon:"🩺",desc:"نوع پوشش و شرایط قرارداد می‌تواند متفاوت باشد؛ جزئیات را در سایت ارائه‌دهنده بررسی کنید."},
+  {id:"travel",title:"بیمه مسافرتی",category:"مسافرتی",icon:"✈️",desc:"پوشش‌ها را با توجه به مقصد و مدت سفر در صفحه رسمی بررسی کنید."},
+  {id:"liability",title:"بیمه مسئولیت",category:"سایر",icon:"🛡️",desc:"نوع مسئولیت و حدود تعهدات باید متناسب با فعالیت موردنظر بررسی شود."}
+];
+
+const categoryItems = [["همه","▦"],["خودرو","🚘"],["موتور","🏍️"],["ساختمان","🏠"],["عمر و درمان","💚"],["مسافرتی","✈️"],["سایر","＋"]];
+
+/* ========== State ========== */
+let products = loadProducts();
+let activeCategory = "همه";
+let editingId = null;
+let adminOpen = false;
+let compareId = localRead("bimeyar_compare", null); // single product id
+let favorites = localRead("bimeyar_favorites", []);
+let policies = localRead("bimeyar_policies", []);
+let pendingProductId = null; // for modal
+
+/* ========== Helpers ========== */
+function localRead(key, fallback) {
+  try {
+    const s = localStorage.getItem(key);
+    return s ? JSON.parse(s) : fallback;
+  } catch (e) { return fallback; }
+}
+function localWrite(key, val) {
+  localStorage.setItem(key, JSON.stringify(val));
+}
+function loadProducts() {
+  try {
+    const s = localStorage.getItem("bimeyar_products");
+    return s ? JSON.parse(s) : seed.map(x => ({...x}));
+  } catch (e) { return seed.map(x => ({...x})); }
+}
+function saveLocal() {
+  localStorage.setItem("bimeyar_products", JSON.stringify(products));
+}
+function toast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.style.display = "block";
+  setTimeout(() => t.style.display = "none", 2800);
+}
+function escapeHtml(s) {
+  return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function getProviderUrl(providerId, productId) {
+  const p = PROVIDERS[providerId];
+  if (!p) return "#";
+  return p.urls[productId] || p.base;
+}
+
+/* ========== Provider Modal ========== */
+function openProviderModal(productId) {
+  pendingProductId = productId;
+  const product = products.find(x => x.id === productId);
+  document.getElementById("modalTitle").textContent = "کدام سایت را انتخاب می‌کنی؟";
+  document.getElementById("modalDesc").textContent = product
+    ? `برای «${product.title}» یکی از سه پلتفرم زیر را انتخاب کن:`
+    : "یکی از سه پلتفرم معتبر را انتخاب کن.";
+  const box = document.getElementById("providerOptions");
+  box.innerHTML = Object.values(PROVIDERS).map(pr => `
+    <button type="button" class="provider-btn" data-provider="${pr.id}">
+      <span class="logo ${pr.logoClass}">${pr.name.charAt(0)}</span>
+      <span>
+        <strong style="display:block">${escapeHtml(pr.name)}</strong>
+        <small style="color:var(--muted);font-weight:500">ورود به صفحه استعلام</small>
+      </span>
+    </button>
+  `).join("");
+  box.querySelectorAll("[data-provider]").forEach(btn => {
+    btn.onclick = () => {
+      const url = getProviderUrl(btn.dataset.provider, pendingProductId);
+      window.open(url, "_blank", "noopener,noreferrer");
+      closeProviderModal();
+      toast("در حال انتقال به " + PROVIDERS[btn.dataset.provider].name);
+    };
+  });
+  document.getElementById("providerModal").classList.add("show");
+}
+function closeProviderModal() {
+  document.getElementById("providerModal").classList.remove("show");
+  pendingProductId = null;
+}
+document.getElementById("closeModal").onclick = closeProviderModal;
+document.getElementById("providerModal").addEventListener("click", e => {
+  if (e.target.id === "providerModal") closeProviderModal();
+});
+
+/* ========== Render ========== */
+function renderCategories() {
+  document.getElementById("categories").innerHTML = categoryItems.map(([name, icon]) =>
+    `<button class="cat${activeCategory === name ? " active" : ""}" data-category="${name}" type="button">
+      <div class="cat-icon">${icon}</div>
+      <strong>${name === "همه" ? "همه بیمه‌ها" : "بیمه " + name}</strong>
+    </button>`
+  ).join("");
+  document.querySelectorAll(".cat").forEach(b => b.addEventListener("click", () => {
+    activeCategory = b.dataset.category;
+    renderCategories();
+    renderCards();
+    document.getElementById("insurance").scrollIntoView({behavior: "smooth"});
+  }));
+}
+
+function renderCards() {
+  const q = document.getElementById("search").value.trim().toLocaleLowerCase("fa");
+  let arr = products.filter(p =>
+    (activeCategory === "همه" || p.category === activeCategory) &&
+    (!q || (p.title + " " + p.category + " " + p.desc).toLocaleLowerCase("fa").includes(q))
+  );
+  if (document.getElementById("sort").value === "name") {
+    arr.sort((a, b) => a.title.localeCompare(b.title, "fa"));
+  }
+  const el = document.getElementById("cards");
+  if (!arr.length) {
+    el.innerHTML = '<div class="empty">موردی پیدا نشد؛ عبارت دیگری جست‌وجو کن.</div>';
+    return;
+  }
+  el.innerHTML = arr.map(p => {
+    const isFav = favorites.includes(p.id);
+    const isCmp = compareId === p.id;
+    return `
+    <article class="insurance-card">
+      <div class="card-top">
+        <div class="card-icon">${escapeHtml(p.icon || "🛡️")}</div>
+        <div>
+          <h3>${escapeHtml(p.title)}</h3>
+          <span class="status">مقایسه در سه سایت</span>
+        </div>
+      </div>
+      <p>${escapeHtml(p.desc || "برای اطلاع از شرایط و قیمت نهایی به سایت ارائه‌دهنده مراجعه کنید.")}</p>
+      <div class="card-actions">
+        <button class="btn primary" type="button" data-inquire="${escapeHtml(p.id)}">استعلام و خرید ↗</button>
+        <button class="btn soft" type="button" data-detail="${escapeHtml(p.id)}">جزئیات</button>
+      </div>
+      <div class="feature-actions">
+        <button class="mini-btn${isFav ? " active" : ""}" type="button" data-fav="${escapeHtml(p.id)}">${isFav ? "♥ ذخیره‌شده" : "♡ ذخیره"}</button>
+        <button class="mini-btn${isCmp ? " active" : ""}" type="button" data-compare="${escapeHtml(p.id)}">${isCmp ? "✓ در حال مقایسه" : "＋ مقایسه"}</button>
+      </div>
+    </article>`;
+  }).join("");
+
+  el.querySelectorAll("[data-inquire]").forEach(b => {
+    b.onclick = () => openProviderModal(b.dataset.inquire);
+  });
+  el.querySelectorAll("[data-detail]").forEach(b => {
+    b.addEventListener("click", () => {
+      const p = products.find(x => x.id === b.dataset.detail);
+      if (p) alert(p.title + "\n\n" + p.desc + "\n\nقیمت نهایی را در سایت‌های ازکی، بیمه دات‌کام یا بیمه‌بازار بررسی کنید.");
+    });
+  });
+  el.querySelectorAll("[data-fav]").forEach(b => {
+    b.onclick = () => {
+      const id = b.dataset.fav;
+      if (favorites.includes(id)) favorites = favorites.filter(x => x !== id);
+      else favorites.push(id);
+      localWrite("bimeyar_favorites", favorites);
+      renderCards();
+      renderFavorites();
+      toast(favorites.includes(id) ? "به علاقه‌مندی‌ها اضافه شد." : "از علاقه‌مندی‌ها حذف شد.");
+    };
+  });
+  el.querySelectorAll("[data-compare]").forEach(b => {
+    b.onclick = () => {
+      const id = b.dataset.compare;
+      compareId = (compareId === id) ? null : id;
+      localWrite("bimeyar_compare", compareId);
+      renderCards();
+      renderComparison();
+      if (compareId) {
+        document.getElementById("compare").scrollIntoView({behavior: "smooth"});
+        toast("مقایسه برای «" + (products.find(x => x.id === id)?.title || "") + "» فعال شد.");
+      }
+    };
+  });
+}
+
+function renderComparison() {
+  const help = document.getElementById("compareHelp");
+  const area = document.getElementById("compareArea");
+  if (!compareId) {
+    help.style.display = "block";
+    area.innerHTML = "";
+    return;
+  }
+  const product = products.find(p => p.id === compareId);
+  if (!product) {
+    compareId = null;
+    localWrite("bimeyar_compare", null);
+    help.style.display = "block";
+    area.innerHTML = "";
+    return;
+  }
+  help.style.display = "none";
+  area.innerHTML = `
+    <div style="margin-bottom:14px">
+      <strong style="font-size:17px">${escapeHtml(product.icon)} ${escapeHtml(product.title)}</strong>
+      <p class="sub" style="margin:6px 0 0">مقایسه همین بیمه در سه پلتفرم. قیمت واقعی فقط در سایت هر ارائه‌دهنده مشخص می‌شود.</p>
+    </div>
+    <div class="compare-grid">
+      ${Object.values(PROVIDERS).map(pr => {
+        const url = getProviderUrl(pr.id, product.id);
+        const siteClass = pr.id === "azki" ? "site-azki" : pr.id === "bimeh" ? "site-bimeh" : "site-bazar";
+        const badgeClass = pr.id === "azki" ? "badge-blue" : pr.id === "bimeh" ? "badge-purple" : "badge-yellow";
+        return `
+        <div class="compare-site ${siteClass}">
+          <h4>
+            <span class="logo ${pr.logoClass}" style="width:32px;height:32px;font-size:14px;border-radius:10px;display:inline-grid;place-items:center;color:white">${pr.name.charAt(0)}</span>
+            ${escapeHtml(pr.name)}
+          </h4>
+          <div>
+            <span class="badge ${badgeClass}">استعلام قیمت واقعی</span>
+          </div>
+          <ul style="margin:0;padding-right:18px;color:#4b5563;font-size:13px;line-height:1.9">
+            <li>مقایسه قیمت شرکت‌های مختلف</li>
+            <li>امکان خرید آنلاین و اقساطی</li>
+            <li>پشتیبانی و صدور الکترونیکی</li>
+          </ul>
+          <a class="btn ${pr.id === "bazar" ? "yellow-btn" : "primary"}" href="${url}" target="_blank" rel="noopener noreferrer" style="margin-top:auto">
+            ورود به ${escapeHtml(pr.name)} ↗
+          </a>
+        </div>`;
+      }).join("")}
+    </div>
+  `;
+}
+
+function renderFavorites() {
+  const el = document.getElementById("favoritesList");
+  const items = favorites.map(id => products.find(p => p.id === id)).filter(Boolean);
+  if (!items.length) {
+    el.innerHTML = '<p class="tiny">هنوز موردی ذخیره نشده است.</p>';
+    return;
+  }
+  el.innerHTML = items.map(p => `
+    <div class="saved-item">
+      <span><strong>${escapeHtml(p.icon)} ${escapeHtml(p.title)}</strong><small>${escapeHtml(p.category)}</small></span>
+      <button class="mini-btn" type="button" data-unfav="${escapeHtml(p.id)}">حذف</button>
+    </div>
+  `).join("");
+  el.querySelectorAll("[data-unfav]").forEach(b => {
+    b.onclick = () => {
+      favorites = favorites.filter(x => x !== b.dataset.unfav);
+      localWrite("bimeyar_favorites", favorites);
+      renderFavorites();
+      renderCards();
+    };
+  });
+}
+
+function renderPolicies() {
+  const el = document.getElementById("policiesList");
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  policies.sort((a, b) => a.expiry.localeCompare(b.expiry));
+  if (!policies.length) {
+    el.innerHTML = '<p class="tiny">یادآوری ثبت‌شده‌ای وجود ندارد.</p>';
+    return;
+  }
+  el.innerHTML = policies.map(p => {
+    const d = new Date(p.expiry + "T00:00:00");
+    const days = Math.ceil((d - today) / 86400000);
+    let state = days < 0 ? "منقضی‌شده" : days === 0 ? "انقضا امروز" : days <= 30 ? `تا انقضا ${days} روز` : "ثبت‌شده";
+    return `
+      <div class="saved-item">
+        <span>
+          <strong>${escapeHtml(p.title)}</strong>
+          <small>${escapeHtml(p.expiry)} · ${state}${p.note ? " · " + escapeHtml(p.note) : ""}</small>
+        </span>
+        <button class="mini-btn" type="button" data-delpolicy="${escapeHtml(p.id)}">حذف</button>
+      </div>`;
+  }).join("");
+  el.querySelectorAll("[data-delpolicy]").forEach(b => {
+    b.onclick = () => {
+      policies = policies.filter(p => p.id !== b.dataset.delpolicy);
+      localWrite("bimeyar_policies", policies);
+      renderPolicies();
+    };
+  });
+  const due = policies.filter(p => {
+    const d = new Date(p.expiry + "T00:00:00");
+    const days = Math.ceil((d - today) / 86400000);
+    return days >= 0 && days <= 7;
+  });
+  if (due.length) toast("یادآوری: " + due.map(p => p.title).join("، ") + " به‌زودی منقضی می‌شود.");
+}
+
+function renderAdmin() {
+  document.getElementById("adminList").innerHTML = products.map(p => `
+    <div class="admin-item">
+      <div>
+        <strong>${escapeHtml(p.icon)} ${escapeHtml(p.title)}</strong>
+        <small style="display:block;color:var(--muted)">${escapeHtml(p.category)}</small>
+      </div>
+      <div class="admin-actions" style="margin:0">
+        <button class="btn soft" type="button" data-edit="${escapeHtml(p.id)}">ویرایش</button>
+        <button class="btn outline" type="button" data-delete="${escapeHtml(p.id)}">حذف</button>
+      </div>
+    </div>
+  `).join("");
+  document.querySelectorAll("[data-edit]").forEach(b => b.onclick = () => editProduct(b.dataset.edit));
+  document.querySelectorAll("[data-delete]").forEach(b => b.onclick = () => {
+    if (confirm("این مورد از فهرست این مرورگر حذف شود؟")) {
+      products = products.filter(p => p.id !== b.dataset.delete);
+      saveLocal();
+      renderAll();
+      toast("مورد حذف شد.");
+    }
+  });
+}
+
+function editProduct(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+  editingId = id;
+  document.getElementById("pTitle").value = p.title;
+  document.getElementById("pCategory").value = p.category;
+  document.getElementById("pIcon").value = p.icon || "🛡️";
+  document.getElementById("pLink").value = p.link || "";
+  document.getElementById("pDesc").value = p.desc || "";
+  document.getElementById("saveProduct").textContent = "ثبت تغییرات";
+}
+
+function resetForm() {
+  editingId = null;
+  ["pTitle", "pLink", "pDesc"].forEach(id => document.getElementById(id).value = "");
+  document.getElementById("pIcon").value = "🛡️";
+  document.getElementById("saveProduct").textContent = "ذخیره بیمه";
+}
+
+function renderAll() {
+  renderCategories();
+  renderCards();
+  renderFavorites();
+  renderComparison();
+  renderPolicies();
+  if (adminOpen) renderAdmin();
+}
+
+/* ========== Events ========== */
+document.getElementById("searchBtn").onclick = () => {
+  activeCategory = "همه";
+  renderCategories();
+  renderCards();
+  document.getElementById("insurance").scrollIntoView({behavior: "smooth"});
+};
+document.getElementById("search").addEventListener("keydown", e => {
+  if (e.key === "Enter") document.getElementById("searchBtn").click();
+});
+document.getElementById("sort").onchange = renderCards;
+
+document.getElementById("clearCompare").onclick = () => {
+  compareId = null;
+  localWrite("bimeyar_compare", null);
+  renderComparison();
+  renderCards();
+};
+
+document.getElementById("addPolicy").onclick = () => {
+  const title = document.getElementById("policyTitle").value.trim();
+  const expiry = document.getElementById("policyExpiry").value;
+  const note = document.getElementById("policyNote").value.trim();
+  if (!title || !expiry) { toast("عنوان بیمه و تاریخ انقضا را وارد کن."); return; }
+  if (Number.isNaN(new Date(expiry + "T00:00:00").getTime())) { toast("تاریخ واردشده معتبر نیست."); return; }
+  policies.push({id: "policy-" + Date.now(), title, expiry, note});
+  localWrite("bimeyar_policies", policies);
+  document.getElementById("policyTitle").value = "";
+  document.getElementById("policyExpiry").value = "";
+  document.getElementById("policyNote").value = "";
+  renderPolicies();
+  toast("یادآوری روی همین دستگاه ثبت شد.");
+};
+
+document.getElementById("saveProfile").onclick = () => {
+  const name = document.getElementById("profileName").value.trim().slice(0, 50);
+  localWrite("bimeyar_profile", {name});
+  document.getElementById("profileStatus").textContent = name ? ("نام نمایشی ذخیره شد: " + name) : "نام نمایشی پاک شد.";
+};
+const profile = localRead("bimeyar_profile", {name: ""});
+document.getElementById("profileName").value = profile.name || "";
+
+document.getElementById("adminToggle").onclick = () => {
+  adminOpen = !adminOpen;
+  document.getElementById("adminPanel").classList.toggle("show", adminOpen);
+  document.getElementById("adminToggle").textContent = adminOpen ? "بستن پنل مدیریت" : "ورود مدیر";
+  if (adminOpen) {
+    document.getElementById("adminPanel").scrollIntoView({behavior: "smooth"});
+    renderAdmin();
+    toast("برای تغییر آنلاین، ابتدا در بخش حساب وارد شو و مجوز مدیر داشته باش.");
+  }
+};
+
+document.getElementById("saveProduct").onclick = () => {
+  const title = document.getElementById("pTitle").value.trim();
+  const category = document.getElementById("pCategory").value;
+  const icon = document.getElementById("pIcon").value.trim() || "🛡️";
+  const link = document.getElementById("pLink").value.trim();
+  const desc = document.getElementById("pDesc").value.trim();
+  if (!title || !desc) { toast("عنوان و توضیح را کامل کنید."); return; }
+  const p = {
+    id: editingId || ("custom-" + Date.now()),
+    title, category, icon, desc,
+    link: link || ""
+  };
+  if (editingId) products = products.map(x => x.id === editingId ? p : x);
+  else products.unshift(p);
+  saveLocal();
+  resetForm();
+  renderAll();
+  toast("ذخیره شد؛ فعلاً فقط در همین مرورگر.");
+};
+document.getElementById("cancelEdit").onclick = resetForm;
+document.getElementById("exportData").onclick = () => {
+  const blob = new Blob([JSON.stringify(products, null, 2)], {type: "application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "bimeyar-backup.json";
+  a.click();
+  URL.revokeObjectURL(a.href);
+};
+
+/* ========== Supabase (same as before, optional) ========== */
+let sbClient = null;
+function getSbConfig() {
+  return localRead("bimeyar_sb_config", {url: "", key: ""});
+}
+function setAuthStatus(msg) {
+  document.getElementById("authStatus").textContent = msg;
+}
+document.getElementById("saveSbConfig").onclick = () => {
+  const url = document.getElementById("sbUrl").value.trim();
+  const key = document.getElementById("sbKey").value.trim();
+  if (!url || !key) { toast("آدرس و کلید را وارد کن."); return; }
+  localWrite("bimeyar_sb_config", {url, key});
+  setAuthStatus("تنظیمات ذخیره شد. صفحه را رفرش کن یا دوباره ورود بزن.");
+  toast("تنظیمات اتصال ذخیره شد.");
+};
+(function initSbFields() {
+  const cfg = getSbConfig();
+  if (cfg.url) document.getElementById("sbUrl").value = cfg.url;
+  if (cfg.key) document.getElementById("sbKey").value = cfg.key;
+  if (cfg.url && cfg.key) setAuthStatus("تنظیمات اتصال موجود است. می‌توانی وارد شوی.");
+})();
+
+document.getElementById("signInBtn").onclick = async () => {
+  toast("برای استفاده کامل از ورود آنلاین، کتابخانه Supabase باید بارگذاری شود. فعلاً حالت محلی فعال است.");
+};
+document.getElementById("signUpBtn").onclick = async () => {
+  toast("برای ساخت حساب آنلاین، ابتدا اتصال Supabase را کامل تنظیم کن.");
+};
+document.getElementById("signOutBtn").onclick = () => {
+  setAuthStatus("خارج شدی.");
+  document.getElementById("signOutBtn").hidden = true;
+};
+
+/* Init */
+renderAll();
+</script>
+</body>
+</html>
